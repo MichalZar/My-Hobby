@@ -1,0 +1,78 @@
+﻿<!DOCTYPE html>
+<html lang="pl">
+<head>
+    <meta charset="utf-8" />
+    <title>Moje Hobby</title>
+    <link href="projekt.css" rel="stylesheet" type="text/css" />
+</head>
+<body>
+    <div id="wrapper">
+        <header>
+            <h1>Kolarstwo - Moje Hobby</h1>
+            <nav>
+                <ol class="menu">
+                    <li><a href="projekt.html">Strona główna</a></li>
+                    <li>
+                        <a href="galeria.html">Galeria zdjęć</a>
+                        <ul>
+                            <li><a href="wyścigi.html">Wyścigi</a></li>
+                            <li><a href="treningi.html">Treningi</a></li>
+                        </ul>
+                    </li>
+                    <li><a href="kontakt.html">Kontakt</a></li>
+                </ol>
+            </nav>
+        </header>
+        <div id="content">
+            <h2>Zapytaj osobiście!</h2>
+            <form action="/action.php" method="post" name="formularz">
+                Imię:
+                <input type="text" name="imie" placeholder="Wprowadź swoje imię" />
+                <br />
+                <br />
+                Nazwisko:
+                <input type="text" name="nazwisko" placeholder="Wprowadź swoje nazwisko" />
+                <br />
+                <br />
+                E-mail:
+                <input type="text" name="email" placeholder="Wprowadź swój e-mail" />
+                <br />
+                <br />
+                Płeć:
+                <label for="male">Mężczyzna</label>
+                <input type="radio" name="plec" id="male" />
+                <label for="female">Kobieta</label>
+                <input type="radio" name="plec" id="female" />
+                <br />
+                <br />
+                Ile masz lat?
+                <select>
+                    <option value="1">Mniej niż 18</option>
+                    <option value="2">18-25</option>
+                    <option value="3">26-40</option>
+                    <option value="4">41-60</option>
+                    <option value="5">Powyżej 60</option>
+                </select>
+                <br />
+                <br />
+                Jaki rodzaj kolarstwa uprawiasz?
+                <input type="checkbox" name="tur" />Turystyczne
+                <input type="checkbox" name="gor" />Górskie
+                <input type="checkbox" name="szo" />Szosowe
+                <input type="checkbox" name="prz" />Przełajowe
+                <br />
+                <br />
+                Miejsce na komentarz:
+                <br />
+                <textarea rows="10" cols="60">Komentarze, uwagi, pytania</textarea>
+                <br />
+                <br />
+                <input type="submit" value="Zatwierdź" />
+                <input type="reset" value="Wyczyść" />
+
+            </form>
+        </div>
+    </div>
+    <footer> 2021 &copy; Copyright, Michał Zaranko Elektronika i Telekomunikacja Grupa 1 </footer>
+</body>
+</html>

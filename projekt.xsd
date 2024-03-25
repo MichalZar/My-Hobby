@@ -1,0 +1,169 @@
+﻿<?xml version="1.0" encoding="utf-8"?>
+<xs:schema xmlns:xs="http://www.w3.org/2001/XMLSchema" attributeFormDefault="unqualified" elementFormDefault="qualified">
+	<xs:element name="hipertext">
+		<xs:complexType>
+			<xs:sequence>
+				<xs:element name="wrapper" type="wrapperType" minOccurs="1"/>
+				<xs:element name="autor" type="autorType"/>
+			</xs:sequence>
+		</xs:complexType>
+	</xs:element>
+
+	<xs:complexType name="autorType" mixed="true">
+		<xs:sequence>
+			<xs:element name="rok" type="rokType"/>
+			<xs:element name="znacznik" type="krotki_napis"/>
+			<xs:element name="dane">
+				<xs:complexType>
+					<xs:sequence>
+						<xs:element name="imie" type="krotki_napis"/>
+						<xs:element name="nazwisko" type="krotki_napis"/>
+						<xs:element name="kierunek">
+							<xs:simpleType>
+								<xs:restriction base="dlugi_napis">
+									<xs:enumeration value="Informatyka"/>
+									<xs:enumeration value="Elektronika i Telekomunikacja"/>
+									<xs:enumeration value="Inżynieria danych"/>
+									<xs:enumeration value="Inżynieria biomedyczna"/>
+									<xs:enumeration value="Automatyka, cybernetyka i robotyka"/>
+								</xs:restriction>
+							</xs:simpleType>
+						</xs:element>
+						<xs:element name="grupa" type="grupaType"/>
+					</xs:sequence>
+				</xs:complexType>
+			</xs:element>
+		</xs:sequence>
+		<xs:attribute name="osoba" type="krotki_napis"/>
+	</xs:complexType>
+	
+	<xs:simpleType name="rokType">
+		<xs:restriction base="xs:integer">
+			<xs:minInclusive value="4"/> 
+		</xs:restriction>
+	</xs:simpleType>
+
+	<xs:complexType name="wrapperType">
+		<xs:sequence>
+			<xs:element ref="tytul" minOccurs="0"/>
+			<xs:element name="menu">
+				<xs:complexType>
+					<xs:sequence>
+						<xs:element name="linki" type="linkiType" minOccurs="1"/>
+					</xs:sequence>
+				</xs:complexType>
+			</xs:element>
+			<xs:element name="content" type="contentType"/>
+		</xs:sequence>
+	</xs:complexType>
+	
+	<xs:simpleType name="grupaType">
+		<xs:restriction base="xs:byte">
+			<xs:maxInclusive value="7"/>
+		</xs:restriction>
+	</xs:simpleType>
+
+	<xs:element name="tytul" type="dlugi_napis"/>
+
+	<xs:simpleType name="krotki_napis">
+		<xs:restriction base="xs:string">
+			<xs:maxLength value="30"/>
+			<xs:minLength value="2"/>
+		</xs:restriction>
+	</xs:simpleType>
+
+	<xs:simpleType name="dlugi_napis">
+		<xs:restriction base="xs:string">
+			<xs:maxLength value="100"/>
+		</xs:restriction>
+	</xs:simpleType>
+	
+	<xs:complexType name="contentType" mixed="true">
+		<xs:sequence>
+			<xs:element ref="tytul" minOccurs="0"/>
+			<xs:element name="spis">
+				<xs:complexType>
+					<xs:sequence>
+						<xs:element name="linki" type="linkiType" minOccurs="1"/>
+					</xs:sequence>
+				</xs:complexType>
+			</xs:element>
+			<xs:element name="sekcja" type="sekcjaType" minOccurs="1" maxOccurs="3"/>
+		</xs:sequence>
+	</xs:complexType>
+
+	<xs:complexType name="sekcjaType">
+		<xs:sequence>
+			<xs:group ref="Grupa"/>
+		</xs:sequence>
+		<xs:attribute name="rodzaj">
+			<xs:simpleType>
+				<xs:restriction base="krotki_napis">
+					<xs:pattern value="KS|OM|MW"/>
+				</xs:restriction>
+			</xs:simpleType>
+		</xs:attribute>
+	</xs:complexType>
+
+	<xs:group name="Grupa">
+		<xs:sequence>
+			<xs:element ref="tytul" minOccurs="1"/>
+			<xs:element name="tresc" type="xs:string" minOccurs="0"/>
+			<xs:element name="lista" type="listaType" minOccurs="0"/>
+			<xs:element name="tabela" minOccurs="0">
+				<xs:complexType>
+					<xs:sequence>
+						<xs:element name="wiersz" type="wierszType" minOccurs="1" maxOccurs="unbounded"/>
+					</xs:sequence>
+				</xs:complexType>
+			</xs:element>
+		</xs:sequence>
+	</xs:group>
+
+	<xs:complexType name="listaType">
+		<xs:sequence>
+			<xs:element name="linki" type="linkiType" minOccurs="1"/>
+		</xs:sequence>
+		<xs:attribute name="kolarstwo" type="krotki_napis"/>
+	</xs:complexType>
+
+	<xs:complexType name="wierszType">
+		<xs:sequence>
+			<xs:element name="kolumna" type="kolumnaType" minOccurs="1" maxOccurs="3"/>
+		</xs:sequence>
+		<xs:attribute name="w" type="ilosc"/>
+	</xs:complexType>
+
+	<xs:complexType name="kolumnaType">
+		<xs:simpleContent>	
+			<xs:extension base="xs:string">
+				<xs:attribute ref="id"/>
+			</xs:extension>
+		</xs:simpleContent>
+	</xs:complexType>
+
+	<xs:complexType name="linkiType">
+		<xs:sequence>
+			<xs:element name="link" type="linkType" minOccurs="1" maxOccurs="unbounded"/>
+		</xs:sequence>
+		<xs:attribute ref="id"/>
+	</xs:complexType>
+
+	<xs:attribute name="id" type="ilosc"/>
+
+	<xs:simpleType name="ilosc">
+		<xs:restriction base="xs:integer">
+			<xs:minInclusive value="1"/>
+			<xs:maxInclusive value="5"/>
+		</xs:restriction>
+	</xs:simpleType>
+	
+	<xs:complexType name="linkType">
+		<xs:simpleContent>
+			<xs:extension base="xs:string">
+				<xs:attribute name="zrodlo" type="xs:anyURI"/>
+			</xs:extension>
+		</xs:simpleContent>
+	</xs:complexType>
+	
+</xs:schema>

@@ -1,0 +1,139 @@
+﻿<?xml version="1.0" encoding="utf-8"?>
+<xs:schema elementFormDefault="qualified" xmlns:xs="http://www.w3.org/2001/XMLSchema">
+	<xs:element name="hipertext">
+		<xs:complexType>
+			<xs:sequence>
+				<xs:element ref="wrapper" />
+				<xs:element ref="autor" />
+			</xs:sequence>
+		</xs:complexType>
+	</xs:element>
+	<xs:element name="wrapper">
+		<xs:complexType>
+			<xs:sequence>
+				<xs:element ref="tytul" />
+				<xs:element ref="menu" />
+				<xs:element ref="content" />
+			</xs:sequence>
+		</xs:complexType>
+	</xs:element>
+	<xs:element name="tytul" type="xs:string" />
+	<xs:element name="menu">
+		<xs:complexType>
+			<xs:sequence>
+				<xs:element ref="linki" />
+			</xs:sequence>
+		</xs:complexType>
+	</xs:element>
+	<xs:element name="linki">
+		<xs:complexType>
+			<xs:sequence>
+				<xs:element minOccurs="0" maxOccurs="unbounded" ref="link" />
+			</xs:sequence>
+			<xs:attribute name="id" type="xs:string" use="required" />
+		</xs:complexType>
+	</xs:element>
+	<xs:element name="link">
+		<xs:complexType>
+			<xs:simpleContent>
+				<xs:extension base="xs:string">
+					<xs:attribute name="zrodlo" type="xs:string" use="required" />
+				</xs:extension>
+			</xs:simpleContent>
+		</xs:complexType>
+	</xs:element>
+	<xs:element name="content">
+		<xs:complexType>
+			<xs:sequence>
+				<xs:element ref="tytul" />
+				<xs:element ref="spis" />
+				<xs:element minOccurs="1" maxOccurs="unbounded" ref="sekcja" />
+			</xs:sequence>
+		</xs:complexType>
+	</xs:element>
+	<xs:element name="spis">
+		<xs:complexType>
+			<xs:sequence>
+				<xs:element ref="linki" />
+			</xs:sequence>
+		</xs:complexType>
+	</xs:element>
+	<xs:element name="sekcja">
+		<xs:complexType>
+			<xs:sequence>
+				<xs:element ref="tytul" />
+				<xs:element minOccurs="0" maxOccurs="1" ref="tresc" />
+				<xs:element minOccurs="0" maxOccurs="1" ref="lista" />
+				<xs:element minOccurs="0" maxOccurs="1" ref="tabela" />
+			</xs:sequence>
+			<xs:attribute name="rodzaj" use="required">
+				<xs:simpleType>
+					<xs:restriction base="xs:NMTOKEN">
+						<xs:enumeration value="KS" />
+						<xs:enumeration value="OM" />
+						<xs:enumeration value="MW" />
+					</xs:restriction>
+				</xs:simpleType>
+			</xs:attribute>
+		</xs:complexType>
+	</xs:element>
+	<xs:element name="tresc" type="xs:string" />
+	<xs:element name="lista">
+		<xs:complexType>
+			<xs:sequence>
+				<xs:element ref="linki" />
+			</xs:sequence>
+			<xs:attribute name="kolarstwo" type="xs:string" />
+		</xs:complexType>
+	</xs:element>
+	<xs:element name="tabela">
+		<xs:complexType>
+			<xs:sequence>
+				<xs:element minOccurs="0" maxOccurs="unbounded" ref="wiersz" />
+			</xs:sequence>
+		</xs:complexType>
+	</xs:element>
+	<xs:element name="wiersz">
+		<xs:complexType>
+			<xs:sequence>
+				<xs:element minOccurs="0" maxOccurs="unbounded" ref="kolumna" />
+			</xs:sequence>
+			<xs:attribute name="w" type="xs:string" use="required" />
+		</xs:complexType>
+	</xs:element>
+	<xs:element name="kolumna">
+		<xs:complexType>
+			<xs:simpleContent>
+				<xs:extension base="xs:string">
+					<xs:attribute name="id" type="xs:string" use="required" />
+				</xs:extension>
+			</xs:simpleContent>
+		</xs:complexType>
+	</xs:element>
+	<xs:element name="autor">
+		<xs:complexType>
+			<xs:sequence>
+				<xs:element ref="rok" />
+				<xs:element ref="znacznik" />
+				<xs:element ref="dane" />
+			</xs:sequence>
+			<xs:attribute default="student" name="osoba" type="xs:string" />
+		</xs:complexType>
+	</xs:element>
+	<xs:element name="rok" type="xs:string" />
+	<xs:element name="znacznik" type="xs:string" />
+	<xs:element name="dane">
+		<xs:complexType>
+			<xs:sequence>
+				<xs:element ref="imie" />
+				<xs:element ref="nazwisko" />
+				<xs:element ref="kierunek" />
+				<xs:element ref="grupa" />
+			</xs:sequence>
+		</xs:complexType>
+	</xs:element>
+	<xs:element name="imie" type="xs:string" />
+	<xs:element name="nazwisko" type="xs:string" />
+	<xs:element name="kierunek" type="xs:string" />
+	<xs:element name="grupa" type="xs:string" />
+</xs:schema>

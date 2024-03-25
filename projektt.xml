@@ -1,0 +1,118 @@
+﻿<?xml version="1.0" encoding="utf-8"?>
+<!DOCTYPE hipertext [
+	<!ELEMENT hipertext (wrapper,autor)>
+	<!ELEMENT wrapper (tytul,menu,content)>
+	<!ELEMENT tytul (#PCDATA)>
+	<!ELEMENT menu (linki)>
+	<!ELEMENT linki (link*)>
+	<!ELEMENT link (#PCDATA)>
+	<!ELEMENT content (tytul,spis,sekcja+)>
+	<!ELEMENT spis (linki)>
+	<!ELEMENT sekcja (tytul,tresc?,lista?,tabela?)>
+	<!ELEMENT tresc (#PCDATA)>
+	<!ELEMENT lista (linki)>
+	<!ELEMENT tabela (wiersz*)>
+	<!ELEMENT wiersz (kolumna*)>
+	<!ELEMENT kolumna (#PCDATA)>
+	<!ELEMENT autor (rok,znacznik,dane)>
+	<!ELEMENT rok (#PCDATA)>
+	<!ELEMENT znacznik (#PCDATA)>
+	<!ELEMENT dane (imie,nazwisko,kierunek,grupa)>
+	<!ELEMENT imie (#PCDATA)>
+	<!ELEMENT nazwisko (#PCDATA)>
+	<!ELEMENT kierunek (#PCDATA)>
+	<!ELEMENT grupa (#PCDATA)>
+	<!ATTLIST hipertext xmlns:xsi CDATA #REQUIRED>
+	<!ATTLIST hipertext xsi:noNamespaceSchemaLocation CDATA #REQUIRED>
+	<!ATTLIST linki id CDATA #REQUIRED>
+	<!ATTLIST link zrodlo CDATA #REQUIRED>
+	<!ATTLIST sekcja rodzaj (KS|OM|MW) #REQUIRED>
+	<!ATTLIST autor osoba CDATA 'student'>
+	<!ATTLIST lista kolarstwo CDATA #IMPLIED>
+	<!ATTLIST wiersz w CDATA #REQUIRED>
+	<!ATTLIST kolumna id CDATA #REQUIRED>
+	<!ENTITY znaczek "Copyright">
+	]>
+<?xml-stylesheet type= "text/xsl" href="projekt.xsl"?>
+<hipertext xmlns:xsi="http://www.w3.org/2001/XMLSchema-instance" xsi:noNamespaceSchemaLocation="projekt.xsd">
+	<wrapper>
+		<tytul>Kolarstwo - Moje Hobby</tytul>
+		<menu>
+			<linki id="1">
+					<link zrodlo="file:///C:/Users/Micha%C5%82/Desktop/projekt%20HiH/HTML%20+%20CSS/projekt.html">Strona główna</link>
+					<link zrodlo="file:///C:/Users/Micha%C5%82/Desktop/projekt%20HiH/HTML%20+%20CSS/galeria.html">Galeria zdjęć</link>
+					<link zrodlo="file:///C:/Users/Micha%C5%82/Desktop/projekt%20HiH/HTML%20+%20CSS/kontakt.html">Kontakt</link>
+			</linki>
+		</menu>
+		<content>
+			<tytul>Spis tresci</tytul>
+			<spis>
+				<linki id="2">
+						<link zrodlo="file:///C:/Users/Micha%C5%82/Desktop/projekt%20HiH/HTML%20+%20CSS/projekt.html#KS">Słów kilka o kolarstwie</link>
+						<link zrodlo="file:///C:/Users/Micha%C5%82/Desktop/projekt%20HiH/HTML%20+%20CSS/projekt.html#OM">O mnie</link>
+						<link zrodlo="file:///C:/Users/Micha%C5%82/Desktop/projekt%20HiH/HTML%20+%20CSS/projekt.html#MW">Wyniki</link>
+				</linki>
+			</spis>
+			<sekcja rodzaj="KS">
+				<tytul>Słów kilka o kolarstwie</tytul>
+				<tresc>
+					Mówi się, że punkt widzenia zależy od punktu siedzenia, dotyczy to róznież kolarstwa. Jedni traktują rower jako dobry środek transportu do pracy lub szkoły, inni widzą w tym pasję i hobby. Choziaż wydawać by się mogło, że kolarstwo to mało interesujący sport to jest zupełnie na odwrót. Jest to nietuzinkowa i dość wyjątkowa dyscyplina. Wymaga wiele techniki, wytrzymałości i samozaparcia. Wbrew pozorom jest również niebezpieczna, a trudne trasy wymagają sporego doświadczenia. Jednakże po sporej ilości godzin na siodełku, można dostrzec jaką frajdę i ile satysfakcji daje nam jazda na rowerze. Rower zabierze nas także w miejsca niezwykłe i oszałamiające. Poznamy sekrety natury i przeżyjemy wiele przygod. W tym sporcie każdy znajdzie coś dla siebie, gdyż w dzisiejszych czasach istnieje bardzo dużo rodzajów kolarstwa m.in.:
+				</tresc>
+				<lista kolarstwo="rodzaje">
+					<linki id="3">
+							<link zrodlo="https://pl.wikipedia.org/wiki/Kolarstwo_szosowe">kolarstwo szosowe</link>
+							<link zrodlo="https://pl.wikipedia.org/wiki/Kolarstwo_górskie">kolarstwo górskie</link>
+							<link zrodlo="https://pl.wikipedia.org/wiki/Kolarstwo_przełajowe">kolarstwo przełajowe</link>
+							<link zrodlo="https://pl.wikipedia.org/wiki/Kolarstwo_torowe">kolarstwo torowe</link>
+					</linki>
+				</lista>
+			</sekcja>
+			<sekcja rodzaj="OM">
+				<tytul>O mnie</tytul>
+				<tresc>
+					Kolarstwem nie interesowałem się od zawsze. Zostałem raczej zmotywowany, przez mojego tatę do podjęcia się treningów. Po nieciekawym wypadku na rowerze w 2017 roku, postanowiłem przekuć porażkę w zwyciestwo i zacząłem jeździć nie tylko rekreacyjnie. Okazło się, że kolarstwo górskie było strzałem w dziesiątkę. Po pół roku wystartowałem w pierwszych zawodach,a rok póżniej zdobyłem swoje pierwsze podium. Dołączyłem do lokalnego klubu kolarskiego, w którym spotkałem wiele ciekawych i spragnionych jazdy osób. Nigdy nie myślałem nad tym, aby wziąść się za kolarstwo na bardziej profesjonalnym poziomie. Od zawsze jeździłem jako amator i myślę, że nadal będę to robił, gdyż jazda na rowerze sprawia mi niesamowitą frajdę.
+				</tresc>
+			</sekcja>
+			<sekcja rodzaj="MW">
+				<tytul>Wyniki</tytul>
+				<tabela>
+					<wiersz w="1">
+						<kolumna id="1">Sezon</kolumna> 
+						<kolumna id="2">Pozycja w kategorii open</kolumna> 
+						<kolumna id="3">Pozycja w kategorii wiekowej</kolumna>
+					</wiersz>
+					<wiersz w="2">
+						<kolumna id="1">2018</kolumna>
+						<kolumna id="2">61</kolumna>
+						<kolumna id="3">9</kolumna>
+					</wiersz>
+					<wiersz w="3">
+						<kolumna id="1">2019</kolumna>
+						<kolumna id="2">17</kolumna>
+						<kolumna id="3">2</kolumna>
+					</wiersz>
+					<wiersz w="4">
+						<kolumna id="1">2020</kolumna>
+						<kolumna id="2">51</kolumna>
+						<kolumna id="3">2</kolumna>
+					</wiersz>
+					<wiersz w="5">
+						<kolumna id="1">2021</kolumna>
+						<kolumna id="2">22</kolumna>
+						<kolumna id="3">3</kolumna>
+					</wiersz>
+				</tabela>
+			</sekcja>
+		</content>
+	</wrapper>
+	<autor osoba="student">
+		<rok>2021</rok>
+		<znacznik>&znaczek;</znacznik>
+		<dane>
+			<imie>Michał</imie>
+			<nazwisko>Zaranko</nazwisko>
+			<kierunek>Elektronika i Telekomunikacja</kierunek>
+			<grupa>1</grupa>
+		</dane>
+	</autor>
+</hipertext>
